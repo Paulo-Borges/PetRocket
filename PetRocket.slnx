@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PetRocket.API/PetRocket.API.csproj" />
+  <Project Path="PetRocket.Application/PetRocket.Application.csproj" />
+  <Project Path="PetRocket.Communication/PetRocket.Communication.csproj" />
+</Solution>

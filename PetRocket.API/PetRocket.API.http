@@ -1,0 +1,6 @@
+@PetRocket.API_HostAddress = http://localhost:5017
+
+GET {{PetRocket.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
