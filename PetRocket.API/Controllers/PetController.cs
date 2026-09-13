@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetRocket.Application.UseCases.Pets.GetAll;
 using PetRocket.Application.UseCases.Pets.Register;
 using PetRocket.Application.UseCases.Pets.Update;
 using PetRocket.Communication.Requests;
@@ -32,5 +33,23 @@ namespace PetRocket.API.Controllers
 
             return NoContent();
         }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(ResponseAllPetJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status400BadRequest)]
+        public IActionResult GetAll()
+        {
+            var useCase = new GetAllPetsUseCase();
+
+            var response = useCase.Execute();
+
+            if(response.Pets.Any())
+            {
+                return Ok(response);
+            }
+            return NoContent();
+        }
+
     }
 }
