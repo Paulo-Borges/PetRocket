@@ -1,11 +1,11 @@
 ﻿using PetRocket.Communication.Requests;
 using PetRocket.Communication.Responses;
 
-namespace PetRocket.Application.UseCases.Pet.Register
+namespace PetRocket.Application.UseCases.Pets.Register
 {
     public class RegisterPetUseCase
     {
-        public ResponseRegisterPetJson Execute(RequestRegisterPetJson request)
+        public ResponseRegisterPetJson Execute(RequestPetJson request)
         {
             return new ResponseRegisterPetJson
             {
