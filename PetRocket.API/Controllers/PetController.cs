@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetRocket.Application.UseCases.Pets.Delete;
 using PetRocket.Application.UseCases.Pets.GetAll;
 using PetRocket.Application.UseCases.Pets.GetById;
 using PetRocket.Application.UseCases.Pets.Register;
@@ -58,13 +59,20 @@ namespace PetRocket.API.Controllers
         public IActionResult Get(int id)
         {
             var useCase = new GetPetByIdUseCase();
-
             var response = useCase.Execute(id);
-
-
             return Ok(response);
         }
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status404NotFound)]
+        public IActionResult Delete(int id)
+        {
+            var useCase = new DeletePetByIdUseCase();
+            useCase.Execute(id);
 
+            return NoContent();
+        }
 
     }
 }
